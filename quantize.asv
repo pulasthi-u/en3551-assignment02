@@ -1,8 +1,0 @@
-function [S, num_zeros] = quantize(C, Q)
-% QUANTIZE Given a matrix C and quantization matrix Q, quantize the entries
-% of C by dividing the matrices elementwise, and rounding off
-
-S = round(C ./ Q);
-num_zeros = sum(S == 0);
-
-end

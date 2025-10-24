@@ -2,4 +2,36 @@ clc;
 clear;
 close all;
 
-img = load("Monarch.mat").A;
+% We will use DCT to compress 8 x 8 blocks of the images
+block_size = 8;
+
+% Array to store names of images being used
+img_names = ["Monarch.mat", "Parrots.mat", "cameraman.mat"];
+num_imgs = size(img_names, 2);
+
+% Array with quality levels to be used for each of the images
+quality_levels = [80, 30, 15];
+num_quality_levels = size(quality_levels, 2);
+
+% Load each image and perform the relevant tasks
+for i = 1:num_imgs
+    img = load(img_names(i));
+    fn = fieldnames(img);
+    img = img.(fn{1});
+
+    figure;
+
+    for quality_level = 1:num_quality_levels
+        subplot(1, num_quality_levels, quality);
+    end
+
+    
+    imshow(img, []);
+    
+    compressed = compress_img(img, block_size, 10);
+    
+    decompressed = decompress_img(compressed, block_size, 10);
+    
+    subplot(1, 2, 2);
+    imshow(decompressed, []);
+end
