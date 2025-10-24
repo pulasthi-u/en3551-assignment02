@@ -1,0 +1,5 @@
+clc;
+clear;
+close all;
+
+img = load("Monarch.mat").A;
