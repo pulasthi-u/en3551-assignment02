@@ -1,8 +1,8 @@
-function [Q] = get_quantization_matrix(block_size, quality_level)
-% Note that the size of Q depends on the block size being used. Here, we
-% hardcode for a block of size 8.
+function [Q] = get_quantization_matrix(quality_level)
+% Note that the size of Q depends on the block size being used for the
+% image. Here, we hardcode the block for size 8.
 
-% Provided quantization matrix for quality level 50 and block size 8
+% Provided quantization matrix for quality level 50
 Q_50 = [
     16 11 10 16 24  40  51  61;
     12 12 14 19 26  58  60  55;
@@ -21,7 +21,6 @@ else
     tau = (100 - quality_level) / 50;
 end
 
-% Round the entries of the scaled Q and clip off values as described
 Q = round(tau * Q_50);
 Q = min(max(Q, 0), 255);
 

@@ -1,0 +1,22 @@
+function [compressed_img, num_zeros] = compress_img(img, quality_level)
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+
+[img_h, img_w] = size(img);
+
+compressed_img = zeros(size(img));
+num_zeros = 0;
+
+for row = 1:8:img_h
+    for col = 1:8:img_w
+        B = img(row:row+7, col:col+7);
+        B = B - 128;
+        C = dct2(B);
+        [S, block_num_zeros] = quantize(C, quality_level);
+        
+        compressed_img(row:row+7, col:col+7) = S;
+        num_zeros = num_zeros + block_num_zeros;
+    end
+end
+
+end
