@@ -11,7 +11,11 @@
 \usepackage{listings}
 \usepackage{tikz}
 \usepackage{parskip}
+\usepackage{tcolorbox}
 \usepackage[hidelinks]{hyperref}
+\tcbuselibrary{breakable}
+
+\allowdisplaybreaks
 
 \newcommand{\extlink}{
 	\begin{tikzpicture}[scale=0.1]
@@ -39,6 +43,8 @@
 	framerule=0pt,
 }
 
+\tcbset{width=\linewidth, boxrule=0pt, colframe=white, colback=white, breakable, boxsep=0pt, left=0pt, right=0pt}
+
 \title{
 	\huge{\textbf{
 		Assignment 02
@@ -60,251 +66,203 @@
 \author{
 	\textbf{Udugamasooriya P. H. J.}\\
 	220658U\\
-	\small{Progress on \href{https://github.com/pulasthi-u/en3150-assignment02}{GitHub \extlink}}
+	\small{Progress on \href{https://github.com/pulasthi-u/en3551-assignment02}{GitHub \extlink}}
 }
 
 \date{12 September 2025}
 
 \begin{document}
 	\maketitle
+
+	\textbf{Question 03} The relevant images and quality levels are \texttt{cameraman.mat}, \texttt{Monarch.mat}, \texttt{Parrot.mat}, and 80\%, 30\% and 15\%. We compress and decompress each image and compare with the original image at each of the quality levels given.
 	
-	\section{Applying 2D DCT for Image Compression}
+	Note that we skip the process of coding and decoding, as we are only interested in the effects of compression on the visual quality of the image.
 	
-	\textbf{Question 03} Five subsets of the provided signal were formed as described. The magnitude plots of the DFTs of each of these subsets are indicated in Figure \ref{subset_dfts}.
+	Results obtained for each image are as follows:
 	
-	\begin{figure}[H]
-		\centering
-		% \includegraphics[width=\linewidth]{images/q1_3_1.png}
-		\caption{DFT-magnitude plots of signals $S_1$ through $S_5$}
-		\label{subset_dfts}
-	\end{figure}
-	
-	To understand the differences between the DFTs above, we start by noting that an $N$-point signal $x[n]$ in the time domain will have an $N$-point DFT $X[k]$ in the frequency domain, related together through the inverse DFT relation as follows; \[
-		x[n] = \dfrac{1}{N} \sum_{k=0}^{N-1} X[n] \cdot e^{j\frac{2\pi k}{N}n}, \text{ for } n = 0, \dots, N-1.
-	\] We interpret the above expression as a decomposition of $x[n]$ into a linear combination of $N$ complex exponentials \[
-		e^{j \omega_k n} = e^{j\frac{2\pi k}{N}n} \; (k = 1, \dots, N-1),
-	\] where \[
-		\omega_k = \frac{2\pi k}{N}.
-	\] Notice that with bigger $N$, the frequencies of the complex exponentials that $x[n]$ is decomposed into become more closely and finely spaced. This means that a higher-order DFT can detect frequency content that simply goes undetected with a lower-order DFT.
-	
-	Further, there are effects of spectral leakage; when we have to work with a lower resolution frequency axis, frequency components that cannot be detected exactly might ``leak" into adjacent frequency values, causing a spreading out out frequencies, further concealing the actual harmonics present.
-	
-	The variation of the profundity of these effects are clearly visible in the plots above. It is most obvious with $S_1$, where no clear distinct peaks are visible, but as the number of samples is increased, certain peaks start to stand out more prominently.
-	
-	For the problem of what harmonics are actually present, we look for the four most prominent spikes in the DFT of $S_5$; the signal whose DFT has the most clearly distinguishable spikes. These spikes are indicated in Figure \ref{dft_spikes}.
-	
-	\begin{figure}[H]
-		\centering
-		% \includegraphics[width=\linewidth]{images/q1_3_1_peaks.png}
-		\caption{Spikes in the DFT-magnitude plot of $S_5$}
-		\label{dft_spikes}
-	\end{figure}
-	
-	We conclude therefore that the harmonics present are $\mathbf{14}\textbf{ Hz}$, $\mathbf{23}\textbf{ Hz}$, $\mathbf{38}\textbf{ Hz}$ and $\mathbf{48}\textbf{ Hz}$.
-	\medskip
-	
-	\textbf{Question 04} DFT averaging is implemented in Listing \ref{dft_avg_code} in Appendix \ref{code}.
-	
-	Figure \ref{avg_dft} shows the magnitude plot resulting from averaging the DFTs of $L = 14$ consecutive subsets taken from the given signal, with the most prominent spikes selected.
-	
-	\begin{figure}[H]
-		\centering
-		% \includegraphics[width=\linewidth]{images/q1_3_2.png}
-		\caption{Magnitude plot of the averaged DFT over several subsets}
-		\label{avg_dft}
-	\end{figure}
-	
-	We observe that the above plot is a much clearer plot, with the same frequencies $\mathbf{14}\textbf{ Hz}$, $\mathbf{23}\textbf{ Hz}$, $\mathbf{38}\textbf{ Hz}$ and $\mathbf{48}\textbf{ Hz}$ as detected before standing out prominently.
-	
-	To analyze this procedure, let us start by denoting the clean signal by $s[n]$ and the Gaussian noise (assumed AWGN) by $w[n]$, so that the observed signal, which we will denote $x[n]$ is given by \[
-		x[n] = s[n] + w[n], \text{ for } n = 1, \dots, N-1,
-	\] where in our case, $N = 1792$. Note that $w[n]$ is a random variable for each $n$; we assume that all the $w[n]$'s are independent, normally distributed (iid) random variables, with zero mean and some variance $\sigma^2$. It follows then that $x[n]$ is also a random variable for each $n$.
-	
-	Denote by $X\left(e^{j\omega}\right)$ the following: \[
-		X\left(e^{j\omega}\right)
-		=
-		\sum_{n=0}^{N-1} x[n] \cdot e^{-j\omega n},
-	\] and let $S\left(e^{j\omega}\right)$ and $W\left(e^{j\omega}\right)$ be defined similarly. Note that $S\left(e^{j\omega}\right)$ is precisely the DTFT of $s[n]$, whereas $X\left(e^{j\omega}\right)$ and $W\left(e^{j\omega}\right)$ are linear combinations of iid Gaussian random variables.
-	
-	Now, observe that \[
-		X\left(e^{j\omega}\right)
-		=
-		\sum_{n=0}^{N-1} x[n] \cdot e^{-j\omega n}
-		=
-		\sum_{n=0}^{K-1} x[n] \cdot e^{-j\omega n}
-		+
-		\sum_{n=K}^{2K-1} x[n] \cdot e^{-j\omega n}
-		+
-		\cdots
-		+
-		\sum_{n=\frac{N}{K} - 1}^{N-1} x[n] \cdot e^{-j\omega n},
-	\] where we break the sum defining $X\left(e^{j\omega}\right)$ into smaller sums taken over smaller subsets of $x[n]$, each having $K$ samples. Let us denote a general term in the above sum by \[
-		X_a\left(e^{j\omega}\right)
-		=
-		\sum_{n=aK}^{(a+1)K-1} x[n] \cdot e^{-j\omega n},
-	\] so that \[
-		X\left(e^{j\omega}\right)
-		=
-		\sum_{a=0}^{\frac{N}{K}-1} X_a\left(e^{j\omega}\right).
-	\]
-	
-	Note that
-	\begin{align*}
-		X_a\left(e^{j\omega}\right)
-		&=	\sum_{n=aK}^{(a+1)K-1} x[n] \cdot e^{-j\omega n} \\
-		&=	\sum_{n=0}^{K-1} x[n + aK] \cdot e^{-j\omega (n + aK)} \\
-		&=	e^{-j\omega aK} \sum_{n=0}^{K-1} x[n + aK] \cdot e^{-j\omega n}.
-	\end{align*}
-	By letting \[
-		X_{aK} \left(e^{j\omega}\right) = \sum_{n=0}^{K-1} x[n + aK] \cdot e^{-j\omega n},
-	\] and putting all this together, using linearity properties, we find that
-	\begin{align*}
-		S\left(e^{j\omega}\right)
-		&=	X\left(e^{j\omega}\right) - W\left(e^{j\omega}\right) \\
-		\sum_{a=0}^{\frac{N}{K}-1} S_a\left(e^{j\omega}\right)
-		&=	\sum_{a=0}^{\frac{N}{K}-1} X_a\left(e^{j\omega}\right)
-			-
-			\sum_{a=0}^{\frac{N}{K}-1} W_a\left(e^{j\omega}\right) \\
-		\sum_{a=0}^{\frac{N}{K}-1} e^{-j\omega aK} \cdot S_{aK} \left(e^{j\omega}\right)
-		&=	\sum_{a=0}^{\frac{N}{K}-1} e^{-j\omega aK} \cdot X_{aK} \left(e^{j\omega}\right)
-			-
-			\sum_{a=0}^{\frac{N}{K}-1} e^{-j\omega aK} \cdot W_{aK} \left(e^{j\omega}\right).
-	\end{align*}
-	
-	Setting $\omega = \dfrac{2\pi k}{K}$ ($k = 1, \dots, K-1$), we obtain \[
-		S\left(e^{j\frac{2\pi k}{K}}\right)
-		=
-		\sum_{a=0}^{\frac{N}{K}-1} \cdot S_{aK} \left(e^{j\omega}\right)
-		=
-		\sum_{a=0}^{\frac{N}{K}-1} X_{aK} \left(e^{j\frac{2\pi k}{K}}\right)
-		-
-		\sum_{a=0}^{\frac{N}{K}-1} W_{aK} \left(e^{j\frac{2\pi k}{K}}\right),
-	\] because $e^{-j\frac{2\pi k}{K} aK} = e^{-j 2\pi ak} = 1$, for any integer $a$ and $k$.
-	
-	Define $X[k]$ for $k=1,\dots,K-1$ by \[
-		X_{aK}[k] = \sum_{n=0}^{K-1} x[n + aK] \cdot e^{-j\frac{2\pi}{K} kn},
-	\] and let $S[k]$ and $W[k]$ also be defined similarly. Noting that $X_{aK}[k] = X_{aK} \left(e^{j\frac{2\pi}{K} k}\right)$, we can then also write \[
-		S\left(e^{j\frac{2\pi k}{K}}\right)
-		=
-		\sum_{a=0}^{\frac{N}{K}-1} \cdot S_{aK} [k]
-		=
-		\sum_{a=0}^{\frac{N}{K}-1} X_{aK} [k]
-		-
-		\sum_{a=0}^{\frac{N}{K}-1} W_{aK} [k].
-	\] Finally, dividing through by $\dfrac{N}{K}$ yields \[
-		\dfrac{K}{N} S\left(e^{j\frac{2\pi k}{K}}\right)
-		=
-		\dfrac{K}{N} \sum_{a=0}^{\frac{N}{K}-1} \cdot S_{aK} [k]
-		=
-		\dfrac{K}{N} \sum_{a=0}^{\frac{N}{K}-1} X_{aK} [k]
-		-
-		\dfrac{K}{N} \sum_{a=0}^{\frac{N}{K}-1} W_{aK} [k].
-	\]
-	
-	But, note that \[
-		W_{aK}[k] = \sum_{n=0}^{K-1} w[n + aK] \cdot e^{-j\frac{2\pi k}{K} n},
-	\] where the $w[n + aK]$'s are iid Gaussian random variables. Hence, it follows that $W_{aK}[k]$ is itself a Gaussian random variable. It is easy to see that due to the iid assumption, the $W_{aK}[k]$'s are also iid, for each $a$ and $k$.
-	
-	We note specifically that each $W_{aK}[k]$ is Gaussian with mean \[
-		\mathbb{E}\left(W_{aK}[k]\right)
-		=
-		\sum_{n=0}^{K-1} \mathbb{E}\left(w[n + aK]\right) \cdot e^{-j\frac{2\pi k}{K} n}
-		= 0,
-	\] and we know that the sample mean over any finite set of observed $W_{aK}[k]$'s is an unbiased estimator of this mean, whose value approaches the true mean as the number of observations increases.
-	
-	The term \[
-		\dfrac{K}{N} \sum_{a=0}^{\frac{N}{K}-1} W_{aK} [k]
-	\] in the expression derived above is exactly the sample mean of some observed values of $W_{aK}[k]$'s once the signal $x[k]$ is given, and \[
-		\dfrac{K}{N} \sum_{a=0}^{\frac{N}{K}-1} X_{aK} [k]
-	\] is the average of $\dfrac{N}{K}$ $K$-point DFTs taken over $\dfrac{N}{K}$ consecutive subsets of $x[n]$.
-	
-	Hence, we have shown that the averaging process lets us approximate $S\left(e^{j\frac{2\pi k}{K}}\right)$ from an AWGN-corrupted signal by acting to reduce the impact of AWGN.
-	\medskip
-	
-	\textbf{Question 05} Reducing $L$ while holding $K$ constant has the effect of dropping out samples from the signal. Plots obtained for different values of $L$ starting from $13$ downwards are shown in Figure \ref{smallestl}.
-	
-	\begin{figure}[H]
-		\centering
-		% \includegraphics[width=\linewidth]{images/smallest_l.png}
-		\caption{DFT averaging with various values of $L$ for $K=128$}
-		\label{smallestl}
-	\end{figure}
-	
-	The four main peaks corresponding to the harmonics present remain prominent until $L=7$. At $L=6$, five prominent peaks are visible; one more close to zero. Hence, the smallest value suitable for $L$ with $K=128$ is $L=7$.
-	\medskip
-	
-	\textbf{Question 06} Values of $K$ such that there exists an integer $L$ for which $KL = 1792$ may be used, if it is desired to use all samples of the signal for analysis, i.e., factors of $1792$. Other values of $K$ may be used, but with different integer $L$ such that $KL < 1792$. Doing this will result in only fewer of the samples being used for the computation, leading to reduced accuracy in the results.
-	
-	\section{Interpolation}
-	
-	\textbf{Question 01} A plot of the first 50 samples of the loaded original signal is given in Figure \ref{orig_x1}.
-	
-	\begin{figure}[H]
-		\centering
-		% \includegraphics[width=0.9\linewidth]{images/q2_orig_sig.png}
-		\caption{Original signal}
-		\label{orig_x1}
-	\end{figure}
-	
-	\textbf{Question 03} Steps (a) through (c) were carried out using the code in Listing \ref{interpol_main} in Appendix \ref{code}. Outputs obtained from the code and relevant plots are as shown in Listings \ref{x2_x_norm}, \ref{x3_x_norm}, \ref{x4_x_norm} and Figures \ref{x2_interp}, \ref{x3_interp}, and \ref{x4_interp} respectively.
-	
-	In each figure, we plot the interpolated version of the signal first, and then superimpose it on the original signal to allow for better comparison.
-	
-	An analysis of the results obtained follows.
-	\newpage
-	\begin{enumerate}[label=(\alph*)]
-		\item \phantom{a}
-		\begin{figure}[H]
-			\centering
-			% \includegraphics[width=0.9\textwidth]{images/q2_x2_interp.png}
-			\caption{$x_2$ Interpolated}
-			\label{x2_interp}
-		\end{figure}
+	\begin{enumerate}
+		\item \texttt{cameraman.mat}
 		
-		\begin{lstlisting}[caption={Code output, $\rVert x_2 - x \lVert$}, label=x2_x_norm]
-Norm of difference: 6.1447
-		\end{lstlisting}
+		\begin{tcolorbox}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\linewidth]{images/cameraman.png}
+				\caption{\texttt{cameraman.mat} at various compression levels}
+				\label{cameraman}
+			\end{figure}
+		\end{tcolorbox}
 		
-		\item \phantom{a}
-		\begin{figure}[H]
-			\centering
-			% \includegraphics[width=0.9\textwidth]{images/q2_x3_interp.png}
-			\caption{$x_3$ Interpolated}
-			\label{x3_interp}
-		\end{figure}
-		\newpage
-		\begin{lstlisting}[caption={Code output, $\rVert x_3 - x \lVert$}, label=x3_x_norm]
-Norm of difference: 8.3652
-		\end{lstlisting}
+		\begin{tcolorbox}
+			\begin{table}[H]
+				\begin{tblr}{
+						colspec={XXXX},
+						vlines, hlines
+					}
+					Quality Level		& 80\% & 30\% & 15\% \\
+					Percentage of Zeros	& 74.9786\% & 89.386\% & 93.3502\% \\
+					PSNR (dB)			& 35.7235 & 29.6951 & 27.4598 \\
+				\end{tblr}
+			\end{table}
+			
+			Comments on visual quality:
+			\begin{itemize}
+				\item 80\% compression
+				\begin{itemize}
+					\item virtually indistinguishable from the original
+					\item slight reduction in contrast levels, e.g., the coat is grayer than in the original
+				\end{itemize}
+				\item 30\% compression
+				\begin{itemize}
+					\item slight blockiness is visible, especially towards the upper right
+					\item some ringing is visible at the edges; there is a slight halo around the cameraman and camera
+					\item the grass on the ground appears blurry
+				\end{itemize}
+				\item 15\% compression
+				\begin{itemize}
+					\item significant blockiness is visible
+					\item ringing effects are visible---there is a blurry halo around the cameraman and camera
+					\item the grass on the ground is significantly more blurry
+					\item there is a clear reduction in contrast levels
+				\end{itemize}
+			\end{itemize}
+		\end{tcolorbox}
 		
-		\item \phantom{a}
-		\begin{figure}[H]
-			\centering
-			% \includegraphics[width=0.9\textwidth]{images/q2_x4_interp.png}
-			\caption{$x_4$ Interpolated}
-			\label{x4_interp}
-		\end{figure}
+%		\begin{minipage}{\linewidth}
+%			
+%		\end{minipage}
+		\vspace{0.5 em}
 		
-		\begin{lstlisting}[caption={Code output, $\rVert x_4 - x \lVert$}, label=x4_x_norm]
-Norm of difference: 23.4998
-		\end{lstlisting}
+		\item \texttt{Monarch.mat}
 		
-		\item Figure \ref{all_compare} shows a plot of the original signal, each interpolated signal separately, and finally, a superimposition of all of the above.
+		\begin{tcolorbox}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\linewidth]{images/monarch.png}
+				\caption{\texttt{Monarch.mat} at various compression levels}
+				\label{monarch}
+			\end{figure}
+		\end{tcolorbox}
 		
-		\begin{figure}[H]
-			\centering
-			% \includegraphics[width=\linewidth]{images/q2_all_compare.png}
-			\caption{Comparison of original signal against all interpolated versions}
-			\label{all_compare}
-		\end{figure}
+		\begin{tcolorbox}
+			\begin{table}[H]
+				\begin{tblr}{
+						colspec={XXXX},
+						vlines, hlines
+					}
+					Quality Level		& 80\% & 30\% & 15\% \\
+					Percentage of Zeros	& 71.8948\% & 85.7666\% & 90.2161\% \\
+					PSNR (dB)			& 35.7556 & 30.0778 & 27.725 \\
+				\end{tblr}
+			\end{table}
+			
+			Comments on visual quality:
+			\begin{itemize}
+				\item 80\% compression
+				\begin{itemize}
+					\item virtually indistinguishable from the original
+					\item slight reduction in contrast levels, e.g., the black lines in the wings seem a lighter shade of gray and the brighter, white regions seem more dull
+				\end{itemize}
+				\item 30\% compression
+				\begin{itemize}
+					\item blockiness is visible
+					\item further reduction in contrast levels
+				\end{itemize}
+				\item 15\% compression
+				\begin{itemize}
+					\item significant blockiness is visible
+					\item the outlines around the white regions on the wings are no longer sharp and have blurred out
+				\end{itemize}
+			\end{itemize}
+		\end{tcolorbox}
+		\vspace{0.5 em}
 		
-		It is clear that the interpolated signal has become less and less of an accurate representation of the actual signal, the more and more zeros we insert to the frequency axis.
+		\item \texttt{Parrot.mat}
 		
-		This is evident from the increase in the norms of the differences between the original and interpolated versions.
+		\begin{tcolorbox}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\linewidth]{images/parrot.png}
+				\caption{\texttt{Parrot.mat} at various compression levels}
+				\label{parrot}
+			\end{figure}
+		\end{tcolorbox}
 		
-		As can be seen from the plots above, the interpolated version reconstructed from $x_4$ shows a lot of smooth variation; with too few samples to interpolate from, rapid variations in the time domain signal cannot be reconstructed.
+		\begin{tcolorbox}
+			\begin{table}[H]
+				\begin{tblr}{
+						colspec={XXXX},
+						vlines, hlines
+					}
+					Quality Level		& 80\% & 30\% & 15\% \\
+					Percentage of Zeros	& 80.5573\% & 91.2155\% & 94.1544\% \\
+					PSNR (dB)			& 38.2348 & 32.9118 & 30.4194 \\
+				\end{tblr}
+			\end{table}
+			
+			Comments on visual quality:
+			\begin{itemize}
+				\item 80\% compression
+				\begin{itemize}
+					\item very similar to the original
+					\item fine details of the feathers have diminished
+				\end{itemize}
+				\item 30\% compression
+				\begin{itemize}
+					\item further blurring of the details of feathers
+					\item some blockiness visible
+				\end{itemize}
+				\item 15\% compression
+				\begin{itemize}
+					\item significant blockiness is visible
+					\item detail of the feathers are significantly lost
+					\item the outlines around the white regions on the wings are no longer sharp and have blurred out
+				\end{itemize}
+			\end{itemize}
+		\end{tcolorbox}
+		\vspace{0.5 em}
 		
-		However, the reconstruction from $x_2$ follows the signal very closely. This uses more samples from the signal and therefore can be used to reconstruct the signal more accurately.
+		\item Image of Choice - \texttt{pisa.jpg}
+		
+		\begin{tcolorbox}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\linewidth]{images/pisa.png}
+				\caption{\texttt{pisa.jpg} at various compression levels}
+				\label{pisa}
+			\end{figure}
+		\end{tcolorbox}
+		
+		\begin{tcolorbox}
+			\begin{table}[H]
+				\begin{tblr}{
+						colspec={XXXX},
+						vlines, hlines
+					}
+					Quality Level		& 80\% & 30\% & 15\% \\
+					Percentage of Zeros	& 87.8315\% & 93.783\% & 95.6683\% \\
+					PSNR (dB)			& 42.1905 & 34.3926 & 31.6468 \\
+				\end{tblr}
+			\end{table}
+			
+			Comments on visual quality:
+			\begin{itemize}
+				\item 80\% compression
+				\begin{itemize}
+					\item virtually indistinguishable from the original
+					\item slight reduction in contrast levels, e.g., the black lines in the wings seem a lighter shade of gray and the brighter, white regions seem more dull
+				\end{itemize}
+				\item 30\% compression
+				\begin{itemize}
+					\item blockiness is visible
+					\item further reduction in contrast levels
+				\end{itemize}
+				\item 15\% compression
+				\begin{itemize}
+					\item significant blockiness is visible
+					\item the outlines around the white regions on the wings are no longer sharp and have blurred out
+				\end{itemize}
+			\end{itemize}
+		\end{tcolorbox}
 		
 	\end{enumerate}
 	

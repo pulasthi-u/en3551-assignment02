@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.6)  24 OCT 2025 12:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.6)  25 OCT 2025 16:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -627,7 +627,35 @@ Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count341
 ))
-(C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
+Package: tcolorbox 2024/10/22 version 6.4.1 text color boxes
+
+(C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks40
+\verbatim@line=\toks41
+\verbatim@in@stream=\read3
+)
+(C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/trimspaces\trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box95
+\tcb@upperbox=\box96
+\tcb@lowerbox=\box97
+\tcb@phantombox=\box98
+\c@tcbbreakpart=\count342
+\c@tcblayer=\count343
+\c@tcolorbox@number=\count344
+\l__tcobox_tmpa_box=\box99
+\l__tcobox_tmpa_dim=\dimen314
+\tcb@temp=\box100
+\tcb@temp=\box101
+\tcb@temp=\box102
+\tcb@temp=\box103
+) (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekey
@@ -661,15 +689,15 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 tring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count342
+\c@section@level=\count345
 )
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen314
-\Hy@linkcounter=\count343
-\Hy@pagecounter=\count344
+\@linkdim=\dimen315
+\Hy@linkcounter=\count346
+\Hy@pagecounter=\count347
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -678,7 +706,7 @@ Now handling font encoding PD1 ...
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count345
+\Hy@SavedSpaceFactor=\count348
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
@@ -692,14 +720,14 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count346
+\c@Hy@tempcnt=\count349
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen315
+\XeTeXLinkMargin=\dimen316
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -709,9 +737,9 @@ y
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count347
-\Field@Width=\dimen316
-\Fld@charsize=\dimen317
+\Fld@menulength=\count350
+\Field@Width=\dimen317
+\Fld@charsize=\dimen318
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -723,9 +751,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count348
-\c@Item=\count349
-\c@Hfootnote=\count350
+\Hy@abspage=\count351
+\c@Item=\count352
+\c@Hfootnote=\count353
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
@@ -736,8 +764,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count351
-\c@bookmark@seq@number=\count352
+\Fld@listcount=\count354
+\c@bookmark@seq@number=\count355
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilech
 eck.sty
@@ -752,11 +780,22 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip55
 )
+(C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbbreakable.cod
+e.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.4.1'
+(C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/pdfcol\pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+)
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box104
+\tcb@totalupperbox=\box105
+\tcb@totallowerbox=\box106
+)
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-LaTeX Font Info:    Trying to load font information for OT1+bch on input line 6
-8.
+LaTeX Font Info:    Trying to load font information for OT1+bch on input line 7
+4.
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1bch.fd
 File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
@@ -764,24 +803,24 @@ File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
 (220658U_A02.aux)
 \openout1 = `220658U_A02.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -826,17 +865,17 @@ Package: xparse 2024-08-16 L3 Experimental document command parser
 ))
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count353
-\scratchdimen=\dimen318
-\scratchbox=\box95
-\nofMPsegments=\count354
-\nofMParguments=\count355
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count356
-\MPscratchDim=\dimen319
-\MPnumerator=\count357
-\makeMPintoPDFobject=\count358
-\everyMPtoPDFconversion=\toks41
+\scratchcounter=\count356
+\scratchdimen=\dimen319
+\scratchbox=\box107
+\nofMPsegments=\count357
+\nofMParguments=\count358
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count359
+\MPscratchDim=\dimen320
+\MPnumerator=\count360
+\makeMPintoPDFobject=\count361
+\everyMPtoPDFconversion=\toks43
 )
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base
 .sty
@@ -847,38 +886,99 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-\c@lstlisting=\count359
-Package hyperref Info: Link coloring OFF on input line 68.
+\c@lstlisting=\count362
+Package hyperref Info: Link coloring OFF on input line 74.
  (220658U_A02.out) (220658U_A02.out)
 \@outlinefile=\write4
 \openout4 = `220658U_A02.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 76.
 
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 76.
 
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+<images/cameraman.png, id=19, 1362.59062pt x 364.36125pt>
+File: images/cameraman.png Graphic file (type png)
+<use images/cameraman.png>
+Package pdftex.def Info: images/cameraman.png  used on input line 89.
+(pdftex.def)             Requested size: 444.75496pt x 118.92749pt.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+LaTeX Font Info:    Trying to load font information for TS1+bch on input line 1
+09.
+
+(C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1bch.fd
+File: ts1bch.fd 2004/10/18 font definitions for TS1/bch.
+)
 
 [1
 
 {C:/Users/HP/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/HP/AppD
-ata/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+ata/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./images/cameraman.png>
+]
+<images/monarch.png, id=32, 1376.14125pt x 371.13657pt>
+File: images/monarch.png Graphic file (type png)
+<use images/monarch.png>
+Package pdftex.def Info: images/monarch.png  used on input line 140.
+(pdftex.def)             Requested size: 444.75496pt x 119.94405pt.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+<images/parrot.png, id=33, 1355.8153pt x 359.09157pt>
+File: images/parrot.png Graphic file (type png)
+<use images/parrot.png>
+Package pdftex.def Info: images/parrot.png  used on input line 184.
+(pdftex.def)             Requested size: 444.75496pt x 117.79375pt.
 
-[2]
 
-[3]
+[2 <./images/monarch.png>]
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+<images/pisa.png, id=42, 1349.04pt x 436.63126pt>
+File: images/pisa.png Graphic file (type png)
+<use images/pisa.png>
+Package pdftex.def Info: images/pisa.png  used on input line 228.
+(pdftex.def)             Requested size: 444.75496pt x 143.94884pt.
+> Step: init table outer spec.
+> Step: parse table options.
+> Step: split table.
+> Step: init table inner spec.
+> Step: parse table inner spec.
+> Step: execute table commands.
+> Step: calculate cell and line sizes.
+> Step: build the whole table.
+
+
+[3 <./images/parrot.png> <./images/pisa.png>]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 273.
+
 
 [4]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 264.
-
 
 [5]
 
@@ -890,53 +990,30 @@ nput line 264.
 
 [9]
 
-[10]
-
-[11]
-
-[12] (220658U_A02.aux)
+[10] (220658U_A02.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-Package rerunfilecheck Warning: File `220658U_A02.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `220658U_A02.out':
-(rerunfilecheck)             Before: A9F3EEB61FE07073A1E2E944809082CF;853
-(rerunfilecheck)             After:  00726CB356B8E1C217C9AAA23FC51069;737.
+Package rerunfilecheck Info: File `220658U_A02.out' has not changed.
+(rerunfilecheck)             Checksum: 6BA97445C69C897D5E98C349CC08547D;386.
  ) 
 Here is how much of TeX's memory you used:
- 25983 strings out of 473530
- 482519 string characters out of 5716247
- 1407419 words of memory out of 5000000
- 48493 multiletter control sequences out of 15000+600000
- 583778 words of font info for 88 fonts, out of 8000000 for 9000
+ 28513 strings out of 473530
+ 550220 string characters out of 5716247
+ 1448759 words of memory out of 5000000
+ 51015 multiletter control sequences out of 15000+600000
+ 585038 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,9n,87p,538b,1976s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,9n,99p,528b,2536s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\HP\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt100
 0.pk><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bc
 hb8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charte
 r/bchr8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmbx10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmex10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmmi10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/HP/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/HP/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/HP/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/HP/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/HP/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/HP/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/User
-s/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.p
-fb>
-Output written on 220658U_A02.pdf (12 pages, 238073 bytes).
+onts/cm/cmtt10.pfb>
+Output written on 220658U_A02.pdf (10 pages, 1491749 bytes).
 PDF statistics:
- 557 PDF objects out of 1000 (max. 8388607)
- 333 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 464 PDF objects out of 1000 (max. 8388607)
+ 318 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
