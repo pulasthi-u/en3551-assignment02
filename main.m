@@ -30,15 +30,13 @@ for i = 0:num_imgs
     end
 
     figure;
+    t = tiledlayout(1, num_quality_levels+1,'TileSpacing', 'compact', 'Padding', 'compact');
 
-    % Add a subplot for the original image
-    subplot(2, ceil((num_quality_levels+1)/2), 1);
-    imshow(img, []);
+    nexttile;
+    imshow(img, [], 'Border', 'tight');
     title("Original Image");
 
-    for quality_level_idx = 2:num_quality_levels+1
-        % Extract the corresponding quality level
-        quality_level = quality_levels(quality_level_idx - 1);
+    for quality_level = quality_levels
         disp("At " + quality_level + "% Compression");
 
         % Compress and decompress
@@ -47,9 +45,9 @@ for i = 0:num_imgs
         % skip this step
         decompressed = decompress_img(compressed, block_size, quality_level);
 
-        % Add a subplot and display the reconstructed image
-        subplot(2, ceil((num_quality_levels+1)/2), quality_level_idx);
-        imshow(decompressed, []);
+        % Display the reconstructed image
+        nexttile;
+        imshow(decompressed, [], 'Border', 'tight');
         title(quality_level + "% Compression");
         
         % Compute the PSNR
