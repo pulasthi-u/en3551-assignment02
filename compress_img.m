@@ -1,4 +1,4 @@
-function [compressed_img, num_zeros] = compress_img(img, block_size, quality_level)
+function [compressed_img, num_zeros, num_zeros_percent] = compress_img(img, block_size, quality_level)
 
 % Start by converting the image to type double
 img = double(img);
@@ -39,5 +39,8 @@ for row = 1:block_size:img_h
         num_zeros = num_zeros + block_num_zeros;
     end
 end
+
+% Find the number of zeros as a percentage
+num_zeros_percent = (num_zeros / (img_h * img_w)) * 100;
 
 end
