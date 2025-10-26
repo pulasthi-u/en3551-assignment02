@@ -314,310 +314,212 @@
 	\section{Code Snippets}
 	\label{code}
 	
-	\begin{lstlisting}[caption={Main Code}, label=harmonic_main]
-clear;
+	\begin{lstlisting}[caption={Main Code}, label=main]
 clc;
+clear;
 close all;
 
-% 3.1.1 - Load the relevant signal
-load('signal658.mat');
+% We will use DCT to compress 8 x 8 blocks of the images
+block_size = 8;
 
-% Define useful constants
-fs = 128; % Sampling frequency (given)
-Ns = [128 256 512 1024 1792]; % Sizes of subsets to be formed (given)
+% Prepare image of choice
+img_of_choice = rgb2gray(imread('pisa.jpg'));
 
-% For plotting
-figure(1);
-tiledlayout(3, 2, "TileSpacing", "compact", "Padding", "compact");
+% Array to store names of images being used
+img_names = ["Monarch.mat", "Parrots.mat", "cameraman.mat"];
+num_imgs = size(img_names, 2);
 
-% Try to detect harmonics from the DFTs of increasingly bigger subsets of
-% the signal
+% Array with quality levels to be used for each of the images
+quality_levels = [80, 30, 15];
+num_quality_levels = size(quality_levels, 2);
 
-for i = 1:5
-	N_i = Ns(i); % Number of samples in the ith subset
-	f_i = [0:(N_i-1)] * fs / N_i; % Frequency axis corresponding to the ith subset
-	
-	% 3.1.2 - Form the ith subset s_i
-	s_i = xn_test(1:N_i);
-	
-	% 3.1.3 - Obtain the DFT S_i of the ith subset, and then its magnitude
-	S_i = fft(s_i);
-	S_i_mag = abs(S_i);
-	
-	% We will plot the first four figures in a 2x2 configuration, with the
-	% last one in a row of its own
-	if i <= 4
-	nexttile(i);
+% Load each image and perform the relevant tasks
+for i = 0:num_imgs
+	if i == 0
+		img = img_of_choice;
+		disp("Image of Choice");
 	else
-	nexttile(i, [1, 2]);
+		img = load(img_names(i));
+		fn = fieldnames(img);
+		img = img.(fn{1});
+		
+		disp("Image: " + img_names(i));
 	end
 	
-	% 3.1.3 - Plot the magnitudes of the DFT of the ith signal
-	stem(f_i, S_i_mag, "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-	
-	title("DFT-Magnitude of $S_" + i + "$", "Interpreter", "latex");
-	xlabel("Frequency (Hz)", "Interpreter", "latex");
-	xlim([0 f_i(N_i)]);
-	grid on;
-	grid minor;
-end
-
-% Try to detect harmonics by averaging
-
-L = 14; % Number of subsets
-K = 128; % Number of samples in a subset
-
-% 3.1.4 - Find the average DFT from L = 14 consecutive subsets of K = 128
-% samples each, and then obtain its magnitude
-X_avg = dft_average(xn_test, L, K);
-X_avg_mag = abs(X_avg);
-
-f = [0:(K-1)] * fs / K; % Define the frequency axis
-
-% Plot the magnitude of the average DFT
-figure(2);
-
-stem(f, X_avg_mag, "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-
-title("Magnitude of Averaged DFTs", "Interpreter", "latex");
-xlabel("Frequency (Hz)", "Interpreter", "latex");
-xlim([0 f(K)]);
-grid on;
-grid minor;
-
-% 3.1.5 - What is the smallest value of L such that the peaks remain
-% visible?
-
-figure(3);
-tiledlayout(3, 2);
-
-% We will try smaller values L_s for L, starting from 1 less than the last
-% used value
-for L_s = [13 10 8 7 6 5]
-	% Obtain the average DFT for the chosen pair L_s, K
-	X_avg_ = dft_average(xn_test, L_s, K);
-	X_avg_mag_ = abs(X_avg_);
+	figure;
+	t = tiledlayout(1, num_quality_levels+1,'TileSpacing', 'compact', 'Padding', 'compact');
 	
 	nexttile;
+	imshow(img, [], 'Border', 'tight');
+	title("Original Image");
 	
-	% Plot
-	stem(f, X_avg_mag_, "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-	
-	title("Average DFT Magnitude, $L=" + L_s + "$, $K=" + K + "$", "Interpreter", "latex");
-	xlabel("Frequency (Hz)", "Interpreter", "latex");
-	xlim([0 f(K)]);
-	grid on;
-	grid minor;
+	for quality_level = quality_levels
+		disp("At " + quality_level + "% Compression");
+		
+		% Compress and decompress
+		[compressed, num_zeros, num_zeros_percent] = compress_img(img, block_size, quality_level);
+		% Typically there would be a coding and decoding step here, but we
+		% skip this step
+		decompressed = decompress_img(compressed, block_size, quality_level);
+		
+		% Display the reconstructed image
+		nexttile;
+		imshow(decompressed, [], 'Border', 'tight');
+		title(quality_level + "% Compression");
+		
+		% Compute the PSNR
+		psnr_ = psnr(img, decompressed);
+		disp("PSNR = " + psnr_);
+		
+		% Display the number of zeros
+		disp("Number of zeros = " + num_zeros + " (" + num_zeros_percent + "%)");
+	end
 end
 	\end{lstlisting}
 	
-	\begin{lstlisting}[caption={DFT averaging}, label=dft_avg_code]
-function [result] = dft_average(x, L, K)
-% DFT_AVERAGE Average DFT of L consecutive subsets of K samples each from x
-%   x   =   time-domain signal
-%   L   =   number of subsets
-%   K   =   number of samples from each subset
-%
-% Computes the DFT of L consecutive K-point signal formed by partitioning
-% x, and returns the average; i.e., sum of the DFTs divided by L
+	\begin{lstlisting}[caption={Image Compression}, label=compress]
+function [compressed_img, num_zeros, num_zeros_percent] = compress_img(img, block_size, quality_level)
 
-% We compute the DFTs of K-point signals; they will have K samples
-% themselves; construct a dummy K-dimensional array to store the result
-result = complex(zeros(1, K));
+% Start by converting the image to type double
+img = double(img);
 
-for j = 0:(L-1)
-	x_j = x(j*K+1:(j+1)*K); % jth subset
-	X_j = fft(x_j); % DFT of the jth subset
-	
-	% Keep accumulating the DFT over subsets
-	result = result + X_j;
+% Extract dimensions of the image
+[img_h, img_w] = size(img);
+
+% Construct an empty matrix of the same size as the original image to store
+% the compressed image
+compressed_img = zeros(size(img));
+
+% Variable to store the number of zeros in the compressed image
+num_zeros = 0;
+
+% Obtain the quantization matrix to be used in the compression
+Q = get_quantization_matrix(block_size, quality_level);
+
+% Loop over block_size x block_size blocks of the image
+for row = 1:block_size:img_h
+	for col = 1:block_size:img_w
+		% Extract the block_size x block_size block from the image
+		B = img(row:row+(block_size - 1), col:col+(block_size - 1));
+		
+		% Level-off by subtracting 128
+		B = B - 128.0;
+		
+		% Apply the 2D DCT
+		C = dct2(B);
+		
+		% Quantize the DCT coefficients
+		[S, block_num_zeros] = quantize(C, Q);
+		
+		% Replace the relevant block in the target image with the quantized
+		% DCT coefficients
+		compressed_img(row:row+(block_size - 1), col:col+(block_size - 1)) = S;
+		
+		% Keep a running count of the number of zeros
+		num_zeros = num_zeros + block_num_zeros;
+	end
 end
 
-% Average the DFT
-result = result / L;
+% Find the number of zeros as a percentage
+num_zeros_percent = (num_zeros / (img_h * img_w)) * 100;
 
-end
-	\end{lstlisting}
-	
-	\subsection{Interpolation}
-	\begin{lstlisting}[caption={Main Code}, label=interpol_main]
-clear;
-clc;
-close all;
-
-% 3.2.1 - Load the signal
-load handel;
-
-% We will only be looking at the first 20,000 samples of the signal
-N = 20000;
-x_1 = y(1:N);
-
-% Visualize the original signal
-figure;
-
-stem(x_1(1:50), "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-
-title("Original Signal", "Interpreter", "latex");
-grid on;
-grid minor;
-
-% Empty array to store interpolations for later comparison
-interpolations = {};
-
-for i = 2:4
-	% 3.2.2 - Form the signal x_i as described
-	x_i = y(1:i:N);
-	
-	% 3.2.3 -
-	% Obtain an interpolated version of x_i from the zero-padded DFT of x_i
-	% with K = i - 1
-	x_i_interpolated = interpolate(zero_padded_dft(x_i, i-1), i-1);
-	
-	% Compute the norm of the difference between the original signal and
-	% the interpolated version
-	disp("Norm of difference: " + difference_norm(x_i_interpolated, x_1));
-	
-	% Plot the signals for comparison
-	plot_interpolation_v_actual(x_i_interpolated, x_1);
-	
-	% Save the current interpolated version for later comparison
-	interpolations{end+1} = x_i_interpolated;
-end
-
-% Plot all interpolated signals together, and on top of each other with the
-% original signal for comparison
-figure;
-
-% Plot the original signal
-subplot(5, 1, 1);
-
-stem(x_1(1:50), "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-
-title("Original Signal", "Interpreter", "latex");
-grid on;
-grid minor;
-
-% Plot each interpolated signal in succession
-for i = 1:3
-	subplot(5, 1, i + 1);
-	
-	interpolation_i = interpolations{i};
-	stem(interpolation_i(1:50), "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-	
-	title("$x_" + (i+1) + "$ Interpolated", "Interpreter", "latex");
-	grid on;
-	grid minor;
-end
-
-% Plot all interpolations and the original signal on top of each other
-subplot(5, 1, 5);
-
-stem(x_1(1:50), "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-hold on;
-
-for j = 1:3
-	interpolation_j = interpolations{j};
-	stem(interpolation_j(1:50), "Marker", "o", "MarkerSize", 2+j);
-	hold on;
-end
-
-title("Comparison", "Interpreter", "latex");
-legend("Original Signal", "$x_2$ Interpolated", "$x_3$ Interpolated", "$x_4$ Interpolated", "Interpreter", "latex");
-grid on;
-grid minor;
-
-% Helper Functions
-
-function [] = plot_interpolation_v_actual(interpolation, actual)
-	figure;
-	
-	% Plot the interpolated signal
-	subplot(2, 1, 1);
-	
-	stem(interpolation(1:50), "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-	
-	title("Interpolated Signal", "Interpreter", "latex");
-	grid on;
-	grid minor;
-	
-	% Plot the interpolated signal on top of the actual signal for
-	% comparison
-	subplot(2, 1, 2);
-	
-	stem(interpolation(1:50), "Marker", "o", "MarkerSize", 3, "MarkerFaceColor", "auto");
-	hold on;
-	stem(actual(1:50), "Marker", "o", "MarkerSize", 5);
-	
-	title("Interpolated Signal vs. Actual Signal", "Interpreter", "latex");
-	legend("Interpolated Signal", "Actual Signal");
-	grid on;
-	grid minor;
-end
-
-function [result] = difference_norm(x1, x2)
-	% Find the length of the shorter signal
-	N = min(length(x1), length(x2));
-	
-	% Truncate both signals to the same length
-	x1_trunc = x1(1:N);
-	x2_trunc = x2(1:N);
-	
-	% Compute the norm of the difference between the truncated signals
-	result = norm(x1_trunc - x2_trunc);
 end
 	\end{lstlisting}
 	
-	\begin{lstlisting}[caption={Zero-padding DFT}, label=zero_pad_dft_cod]
-function [result] = zero_padded_dft(x, K)
-% ZERO_PADDED_DFT Obtain an (K+1)N-point DFT of x with zeros inserted in
-% the middle
-% 
-%   x   =   time-domain signal, of length N
-%   K   =   sets the length of the resulting DFT
-%
-% Compute the DFT of x, split it in the middle, insert zeros between the
-% two halves, and return the result. Splitting and other manipulations are
-% done depending on the parity of N.
+	\begin{lstlisting}[caption={Image Decompression}, label=decompress]
+function [decompressed_img] = decompress_img(img, block_size, quality_level)
 
-% Start by obtaining the DFT of x
-X = fft(x);
-N = length(X);
+% Start by converting the image type to double
+img = double(img);
 
-if mod(N, 2) % If X has an odd number of samples
-	n = (N+1)/2; % Index of the point to split from
+% Obtain the image dimensions
+[img_h, img_w] = size(img);
+
+% Construct an empty matrix to store the decompressed image
+decompressed_img = zeros(size(img));
+
+% Obtain the quantization matrix used corresponding to the specified
+% quality level
+Q = get_quantization_matrix(block_size, quality_level);
+
+% Loop over block_size x block_size blocks of the image
+for row = 1:block_size:img_h
+	for col = 1:block_size:img_w
+	% Extract the relevant block from the image
+	S = img(row:row+(block_size - 1), col:col+(block_size - 1));
 	
-	% Insert KN zeros as described
-	result = [
-		X(1:n);
-		complex(zeros(K*N, 1));
-		X((n+1):N)
-	];
-else % If X has an even number of samples
-	n = N/2; % Index of the point to split from
+	% Estimate the matrix that was quantized to obtain the block above
+	R = Q .* S;
 	
-	% Insert KN - 1 zeros as described
-	result = [
-		X(1:n);
-		X(n+1)/2;
-		complex(zeros((K*N)-1, 1));
-		X(n+1)/2;
-		X((n+2):N)
-	];
+	% Obtain the inverse DCT
+	E = idct2(R);
+	
+	% Replace the corresponding block in the target image with the IDCT
+	% and add 128 to undo the leveling off
+	decompressed_img(row:row+(block_size - 1), col:col+(block_size - 1)) = E + 128.0;
+	end
 end
 
 end
 	\end{lstlisting}
 	
-	\begin{lstlisting}[caption={Interpolation}, label=interp_code]
-function [result] = interpolate(X, K)
-%INTERPOLATE
+	\begin{lstlisting}[caption={Generation of Quantization Matrix}, label=get_quantization_mat]
+function [Q] = get_quantization_matrix(block_size, quality_level)
+% Note that the size of Q depends on the block size being used. Here, we
+% hardcode for a block of size 8.
 
-N = length(X)/(K+1);
+% Provided quantization matrix for quality level 50 and block size 8
+Q_50 = [
+	16 11 10 16 24  40  51  61;
+	12 12 14 19 26  58  60  55;
+	14 13 16 24 40  57  69  56;
+	14 17 22 29 51  87  80  62;
+	18 22 37 56 68  109 103 77;
+	24 35 55 64 81  104 113 92;
+	49 64 78 87 103 121 120 101;
+	72 92 95 98 112 100 103 99
+];
 
-x = (K+1) * ifft(X);
+% Scaling factor for a specified quality level
+if quality_level < 50
+	tau = 50 / quality_level;
+else
+	tau = (100 - quality_level) / 50;
+end
 
-result = x(1:((K+1)*(N-1)+1));
+% Round the entries of the scaled Q and clip off values as described
+Q = round(tau * Q_50);
+Q = min(max(Q, 0), 255);
 
+end
+	\end{lstlisting}
+	
+	\begin{lstlisting}[caption={Quantization}, label=quantize]
+function [S, num_zeros] = quantize(C, Q)
+
+S = round(C ./ Q);
+num_zeros = sum(sum(S == 0));
+
+end
+	\end{lstlisting}
+	
+	\begin{lstlisting}[caption={PSNR Computation}, label=psnr]
+function [result] = psnr(original_img, reconstructed_img)
+% Convert both images to type double
+original_img = double(original_img);
+reconstructed_img = double(reconstructed_img);
+
+% Maximum intensity level in the original image
+psi_max = max(original_img(:));
+
+% Obtain the error matrix
+error = original_img - reconstructed_img;
+
+% Obtain the root mean squared error
+mean_squared_error = mean(mean(error .^ 2));
+root_mean_squared_error = sqrt(mean_squared_error);
+
+result = 20 * log10(psi_max / root_mean_squared_error);
 end
 	\end{lstlisting}
 \end{document}

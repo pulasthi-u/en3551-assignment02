@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.6)  26 OCT 2025 10:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.6)  26 OCT 2025 10:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -904,7 +904,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/cameraman.png, id=19, 1362.59062pt x 364.36125pt>
+<images/cameraman.png, id=11, 1362.59062pt x 364.36125pt>
 File: images/cameraman.png Graphic file (type png)
 <use images/cameraman.png>
 Package pdftex.def Info: images/cameraman.png  used on input line 91.
@@ -929,7 +929,7 @@ File: ts1bch.fd 2004/10/18 font definitions for TS1/bch.
 {C:/Users/HP/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/HP/AppD
 ata/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./images/cameraman.png>
 ]
-<images/monarch.png, id=32, 1376.14125pt x 371.13657pt>
+<images/monarch.png, id=24, 1376.14125pt x 371.13657pt>
 File: images/monarch.png Graphic file (type png)
 <use images/monarch.png>
 Package pdftex.def Info: images/monarch.png  used on input line 142.
@@ -942,7 +942,7 @@ Package pdftex.def Info: images/monarch.png  used on input line 142.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
-<images/parrot.png, id=33, 1355.8153pt x 359.09157pt>
+<images/parrot.png, id=25, 1355.8153pt x 359.09157pt>
 File: images/parrot.png Graphic file (type png)
 <use images/parrot.png>
 Package pdftex.def Info: images/parrot.png  used on input line 186.
@@ -961,7 +961,7 @@ Package pdftex.def Info: images/parrot.png  used on input line 186.
 
 
 [3 <./images/parrot.png>]
-<images/pisa.png, id=48, 1349.04pt x 436.63126pt>
+<images/pisa.png, id=40, 1349.04pt x 436.63126pt>
 File: images/pisa.png Graphic file (type png)
 <use images/pisa.png>
 Package pdftex.def Info: images/pisa.png  used on input line 233.
@@ -989,50 +989,34 @@ nput line 317.
 
 [8]
 
-[9]
-
-[10]
-
-[11] (220658U_A02.aux)
+[9] (220658U_A02.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-Package rerunfilecheck Warning: File `220658U_A02.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `220658U_A02.out':
-(rerunfilecheck)             Before: 6BA97445C69C897D5E98C349CC08547D;386
-(rerunfilecheck)             After:  A39DE58E39CDA657BF87CE572B5892D9;235.
+Package rerunfilecheck Info: File `220658U_A02.out' has not changed.
+(rerunfilecheck)             Checksum: 574471714252758021565EE4D2D9FD29;112.
  ) 
 Here is how much of TeX's memory you used:
- 28520 strings out of 473530
- 550331 string characters out of 5716247
- 1460759 words of memory out of 5000000
- 51020 multiletter control sequences out of 15000+600000
- 587363 words of font info for 97 fonts, out of 8000000 for 9000
+ 28393 strings out of 473530
+ 548690 string characters out of 5716247
+ 1444759 words of memory out of 5000000
+ 50997 multiletter control sequences out of 15000+600000
+ 587066 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,9n,99p,528b,2536s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsection.A.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
- <C:\Users\HP\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.
-pk><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchb
-8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/
-bchr8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmmi10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/HP/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on 220658U_A02.pdf (11 pages, 1543754 bytes).
+<C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchb8
+a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/b
+chr8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmex10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmmi7.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on 220658U_A02.pdf (9 pages, 1523828 bytes).
 PDF statistics:
- 494 PDF objects out of 1000 (max. 8388607)
- 319 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 351 PDF objects out of 1000 (max. 8388607)
+ 216 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
