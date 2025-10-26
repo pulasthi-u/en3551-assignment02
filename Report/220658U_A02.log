@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.6)  25 OCT 2025 16:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.6)  26 OCT 2025 10:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -795,7 +795,7 @@ Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 LaTeX Font Info:    Trying to load font information for OT1+bch on input line 7
-4.
+6.
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1bch.fd
 File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
@@ -803,24 +803,24 @@ File: ot1bch.fd 2004/10/18 font definitions for OT1/bch.
 (220658U_A02.aux)
 \openout1 = `220658U_A02.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -887,18 +887,18 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \c@lstlisting=\count362
-Package hyperref Info: Link coloring OFF on input line 74.
+Package hyperref Info: Link coloring OFF on input line 76.
  (220658U_A02.out) (220658U_A02.out)
 \@outlinefile=\write4
 \openout4 = `220658U_A02.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 76.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
 
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 76.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -907,7 +907,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <images/cameraman.png, id=19, 1362.59062pt x 364.36125pt>
 File: images/cameraman.png Graphic file (type png)
 <use images/cameraman.png>
-Package pdftex.def Info: images/cameraman.png  used on input line 89.
+Package pdftex.def Info: images/cameraman.png  used on input line 91.
 (pdftex.def)             Requested size: 444.75496pt x 118.92749pt.
 > Step: init table outer spec.
 > Step: parse table options.
@@ -918,7 +918,7 @@ Package pdftex.def Info: images/cameraman.png  used on input line 89.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
 LaTeX Font Info:    Trying to load font information for TS1+bch on input line 1
-09.
+11.
 
 (C:\Users\HP\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1bch.fd
 File: ts1bch.fd 2004/10/18 font definitions for TS1/bch.
@@ -932,7 +932,7 @@ ata/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./images/cameraman.png>
 <images/monarch.png, id=32, 1376.14125pt x 371.13657pt>
 File: images/monarch.png Graphic file (type png)
 <use images/monarch.png>
-Package pdftex.def Info: images/monarch.png  used on input line 140.
+Package pdftex.def Info: images/monarch.png  used on input line 142.
 (pdftex.def)             Requested size: 444.75496pt x 119.94405pt.
 > Step: init table outer spec.
 > Step: parse table options.
@@ -945,7 +945,7 @@ Package pdftex.def Info: images/monarch.png  used on input line 140.
 <images/parrot.png, id=33, 1355.8153pt x 359.09157pt>
 File: images/parrot.png Graphic file (type png)
 <use images/parrot.png>
-Package pdftex.def Info: images/parrot.png  used on input line 184.
+Package pdftex.def Info: images/parrot.png  used on input line 186.
 (pdftex.def)             Requested size: 444.75496pt x 117.79375pt.
 
 
@@ -958,10 +958,13 @@ Package pdftex.def Info: images/parrot.png  used on input line 184.
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
-<images/pisa.png, id=42, 1349.04pt x 436.63126pt>
+
+
+[3 <./images/parrot.png>]
+<images/pisa.png, id=48, 1349.04pt x 436.63126pt>
 File: images/pisa.png Graphic file (type png)
 <use images/pisa.png>
-Package pdftex.def Info: images/pisa.png  used on input line 228.
+Package pdftex.def Info: images/pisa.png  used on input line 233.
 (pdftex.def)             Requested size: 444.75496pt x 143.94884pt.
 > Step: init table outer spec.
 > Step: parse table options.
@@ -973,12 +976,10 @@ Package pdftex.def Info: images/pisa.png  used on input line 228.
 > Step: build the whole table.
 
 
-[3 <./images/parrot.png> <./images/pisa.png>]
+[4 <./images/pisa.png>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 273.
+nput line 317.
 
-
-[4]
 
 [5]
 
@@ -990,30 +991,48 @@ nput line 273.
 
 [9]
 
-[10] (220658U_A02.aux)
+[10]
+
+[11] (220658U_A02.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `220658U_A02.out' has not changed.
-(rerunfilecheck)             Checksum: 6BA97445C69C897D5E98C349CC08547D;386.
+
+
+Package rerunfilecheck Warning: File `220658U_A02.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `220658U_A02.out':
+(rerunfilecheck)             Before: 6BA97445C69C897D5E98C349CC08547D;386
+(rerunfilecheck)             After:  A39DE58E39CDA657BF87CE572B5892D9;235.
  ) 
 Here is how much of TeX's memory you used:
- 28513 strings out of 473530
- 550220 string characters out of 5716247
- 1448759 words of memory out of 5000000
- 51015 multiletter control sequences out of 15000+600000
- 585038 words of font info for 94 fonts, out of 8000000 for 9000
+ 28520 strings out of 473530
+ 550331 string characters out of 5716247
+ 1460759 words of memory out of 5000000
+ 51020 multiletter control sequences out of 15000+600000
+ 587363 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,9n,99p,528b,2536s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\HP\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt100
-0.pk><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bc
-hb8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charte
-r/bchr8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmtt10.pfb>
-Output written on 220658U_A02.pdf (10 pages, 1491749 bytes).
+
+pdfTeX warning (dest): name{subsection.A.2} has been referenced but does not ex
+ist, replaced by a fixed one
+
+ <C:\Users\HP\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.
+pk><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchb
+8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/
+bchr8a.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmex10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmmi7.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb><C:/Users/HP/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/HP/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on 220658U_A02.pdf (11 pages, 1543754 bytes).
 PDF statistics:
- 464 PDF objects out of 1000 (max. 8388607)
- 318 named destinations out of 1000 (max. 500000)
+ 494 PDF objects out of 1000 (max. 8388607)
+ 319 named destinations out of 1000 (max. 500000)
  57 words of extra memory for PDF output out of 10000 (max. 10000000)
 

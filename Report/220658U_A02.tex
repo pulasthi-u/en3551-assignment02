@@ -45,6 +45,8 @@
 
 \tcbset{width=\linewidth, boxrule=0pt, colframe=white, colback=white, breakable, boxsep=0pt, left=0pt, right=0pt}
 
+\setlist[itemize]{itemsep=2pt, parsep=3pt}
+
 \title{
 	\huge{\textbf{
 		Assignment 02
@@ -69,7 +71,7 @@
 	\small{Progress on \href{https://github.com/pulasthi-u/en3551-assignment02}{GitHub \extlink}}
 }
 
-\date{12 September 2025}
+\date{26 October 2025}
 
 \begin{document}
 	\maketitle
@@ -214,12 +216,14 @@
 				\item 15\% compression
 				\begin{itemize}
 					\item significant blockiness is visible
-					\item detail of the feathers are significantly lost
-					\item the outlines around the white regions on the wings are no longer sharp and have blurred out
+					\item significant loss of detail of the feathers; the body seems made up of plain colors
+					\item slight halo visible near the back of the neck
 				\end{itemize}
 			\end{itemize}
 		\end{tcolorbox}
 		\vspace{0.5 em}
+		
+		\newpage
 		
 		\item Image of Choice - \texttt{pisa.jpg}
 		
@@ -249,28 +253,67 @@
 				\item 80\% compression
 				\begin{itemize}
 					\item virtually indistinguishable from the original
-					\item slight reduction in contrast levels, e.g., the black lines in the wings seem a lighter shade of gray and the brighter, white regions seem more dull
 				\end{itemize}
 				\item 30\% compression
 				\begin{itemize}
-					\item blockiness is visible
-					\item further reduction in contrast levels
+					\item walls seem smoothed out
+					\item fine details of carvings and engravings are not visible and are blurry
 				\end{itemize}
 				\item 15\% compression
 				\begin{itemize}
-					\item significant blockiness is visible
-					\item the outlines around the white regions on the wings are no longer sharp and have blurred out
+					\item further loss of fine details due to blurring out
+					\item bands visible in the sky instead of a smooth transition between colors
+					\item some blockiness visible in the grass
 				\end{itemize}
 			\end{itemize}
 		\end{tcolorbox}
-		
 	\end{enumerate}
+	
+	We wish to also make the following general comments:
+	\begin{itemize}
+		\item The quantity $\sigma_e$ is a measure of the average variability/error between the original image and reconstructed image.
+		
+		The PSNR measures how $\sigma_e$ compares with the maximum intensity level $\psi_\text{max}$ in the image.
+		
+		If $\dfrac{\psi_\text{max}}{\sigma_e}$ is high, then we expect the intensity levels in the reconstructed image to remain very close to those of the original image, but to deviate more significantly otherwise.
+		
+		In each of the images, the PSNR can be seen to decrease with decreasing quality level, as expected.
+		
+		\item In each of the cases, even with a quality level as high as 80\%, we see that the algorithm has managed to reduce more than 70\% of the entries in the matrix to zeros, giving a very significant compression at negligible loss of visual quality.
+	\end{itemize}
+	
+	\newpage
+	
+	\textbf{Question 04} We will compare the compressed images over the quality level 15\%.
+	
+	Across the three given images, it seems that \texttt{Monarch.mat} shows the most degradation, followed by \sloppy\texttt{cameraman.mat}, and \texttt{Parrot.mat} shows the least degradation.
+	
+	Further, it seems that the image of personal choice, \texttt{pisa.jpg}, shows even less degradation than \texttt{Parrot.mat}.
+	
+	Among the first three images, \texttt{Monarch.mat} has the most activity, i.e., high frequency content, compared to the other two. Further, \texttt{cameraman.mat} has some sharp edges whereas \texttt{Parrot.mat} mostly has smoother edges.
+	
+	This explains the disparity among their compressed versions. The effect of the DCT is to suppress high frequency content from an image, so images with a lot of such detail will undergo heavier degradation for the same quality level.
+	
+	As sharp edges also contribute high frequency content to an image, images with such edges will also tend to degrade more than images with softer edges. We expect to see some ringing around such edges in the reconstruction due to the suppressed high frequencies.
+	
+	We note that even though an image might contain quickly changing features/textures, if they are concentrated to small regions of the image, or if the features are small compared to the main subject of the image, the loss in such detail appears unnoticeable.
+	
+	For example, the detail of the parrot's feathers, while constituted of high frequencies, remains mostly unnoticeable even in the original image, unless one inspects very closely. However, high frequency content is spread all throughout the image of the butterfly, due to the rapidly varying patterns on its wings.
+	
+	Hence, the loss of detail in the butterfly's wings is more apparent in the compressed image than the loss of detail in the parrot's feathers.
+	
+	Another observation made is the appearance of bands in the compressed image when the original contains smooth gradients. This is a consequence of the choice of independently quantizing 8$\times$8 blocks of the image.
+	
+	The 8$\times$8 blocks restrict the frequencies that can be used to represent the variation within a block to those of cosines taking the form \[\cos\left(\dfrac{(2n+1)k\pi}{16}\right).\] However, when the image size is much larger than $8\times8$, it could contain gradients with far lower frequencies than could be represented by such cosines.
+	
+	As a result, it is possible that such blocks be approximated solely by the average pixel value within them. This could lead to the formation of bands.
+	
+	These effects are visible in the background of \texttt{cameraman.mat} and \texttt{pisa.jpg}, and more significantly so in \texttt{pisa.jpg} due to its greater height.
 	
 	\appendix
 	\section{Code Snippets}
 	\label{code}
 	
-	\subsection{Harmonic Detection}
 	\begin{lstlisting}[caption={Main Code}, label=harmonic_main]
 clear;
 clc;
